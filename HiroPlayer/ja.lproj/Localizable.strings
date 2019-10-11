@@ -1,0 +1,41 @@
+/* 
+  Localizable.strings
+  HiroPlayer
+
+  Created by Yoo on 2018/12/28.
+  Copyright © 2018 nakazato. All rights reserved.
+*/
+
+//Login
+"Tutorial_Message_1" = "1.登録されてない方：メールアドレス、６文字以上のパースワードを入力して下の「新規登録」ボタンをタップしてください。";
+"Tutorial_Message_2" = "2.登録されてる方：メールアドレス、６文字以上のパースワードを入力して下の「SignIn」ボタンをタップしてください。";
+"Tutorial_Message_3" = "3.パスワードを忘れた方：メールアドレスを入力して、下の「パスワード忘れた方」ボタンをタップしてください。";
+"Tutorial_Message_4" = "4.登録されているかどうか分からない方：メールアドレスを入力して、下の「メールアドレス確認」ボタンをタップしてください。";
+
+//Library
+"Library" = "ライブラリ";
+
+//Player
+"Player" = "プレイヤー";
+"Player_list" = "リスト";
+
+//Search
+"Search" = "検索";
+"Purchase_Confirm_Message" = "このアプリはテスト版なので課金されません。課金される場合はアップルパスワードを聞きます。";
+"All" = "すべて";
+"Purchase" = "購入済み";
+"Available" = "未購入";
+"New" = "NEW";
+"Ranking" = "ランキング";
+"Downloading" = "ダウンロード中";
+
+//About
+"About" = "その他";
+"Profile" = "プロフィール";
+"License" = "ライセンス";
+"Contact_us" = "お問い合わせ";
+"Preparing" = "準備中";
+
+//Album
+"Album" = "アルバム";
+

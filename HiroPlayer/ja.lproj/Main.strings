@@ -1,0 +1,108 @@
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "1l5-vx-qpi"; */
+"1l5-vx-qpi.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Email Update"; ObjectID = "3mk-hp-Nzn"; */
+"3mk-hp-Nzn.normalTitle" = "メールアドレス更新";
+
+/* Class = "UIBarButtonItem"; title = "Edit"; ObjectID = "48d-JC-B7J"; */
+"48d-JC-B7J.title" = "Edit";
+
+/* Class = "UITextField"; placeholder = "Password (6 characters or more)"; ObjectID = "4Ml-Hx-tay"; */
+"4Ml-Hx-tay.placeholder" = "パスワード (6文字以上)";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "96L-TZ-xlH"; */
+"96L-TZ-xlH.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Send"; ObjectID = "A1p-zf-tJf"; */
+"A1p-zf-tJf.normalTitle" = "送る";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "B2G-lu-85e"; */
+"B2G-lu-85e.text" = "Label";
+
+/* Class = "UILabel"; text = "100"; ObjectID = "CHO-7u-rLg"; */
+"CHO-7u-rLg.text" = "100";
+
+/* Class = "UISearchBar"; CMq-ah-ysK.scopeButtonTitles[0] = "Title"; ObjectID = "CMq-ah-ysK"; */
+"CMq-ah-ysK.scopeButtonTitles[0]" = "Title";
+
+/* Class = "UISearchBar"; CMq-ah-ysK.scopeButtonTitles[1] = "Artist"; ObjectID = "CMq-ah-ysK"; */
+"CMq-ah-ysK.scopeButtonTitles[1]" = "Artist";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "FcI-D9-835"; */
+"FcI-D9-835.placeholder" = "メールアドレス";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "GMs-D6-VZZ"; */
+"GMs-D6-VZZ.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "JKb-5A-QNV"; */
+"JKb-5A-QNV.text" = "Label";
+
+/* Class = "UIBarButtonItem"; title = "Item"; ObjectID = "KYe-2l-FXG"; */
+"KYe-2l-FXG.title" = "Item";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "LwU-Ag-Q6q"; */
+"LwU-Ag-Q6q.text" = "Label";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "McV-Pq-LCj"; */
+"McV-Pq-LCj.text" = "Label";
+
+/* Class = "UITextField"; placeholder = "Nickname"; ObjectID = "N95-L7-4dJ"; */
+"N95-L7-4dJ.placeholder" = "ニックネーム";
+
+/* Class = "UIButton"; normalTitle = "Down"; ObjectID = "OVX-Zr-m0p"; */
+"OVX-Zr-m0p.normalTitle" = "Down";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "PuJ-2H-KEU"; */
+"PuJ-2H-KEU.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Profile Update"; ObjectID = "TjC-Y8-Huh"; */
+"TjC-Y8-Huh.normalTitle" = "プロフィール更新";
+
+/* Class = "UITextField"; placeholder = "Email"; ObjectID = "URC-BP-hzT"; */
+"URC-BP-hzT.placeholder" = "メールアドレス";
+
+/* Class = "UIButton"; normalTitle = "Password Update"; ObjectID = "Yo2-6O-SGY"; */
+"Yo2-6O-SGY.normalTitle" = "パスワード更新";
+
+/* Class = "UIButton"; normalTitle = "Forgot Password"; ObjectID = "a1T-Qb-uuR"; */
+"a1T-Qb-uuR.normalTitle" = "パスワード忘れた方";
+
+/* Class = "UITabBarItem"; title = "Album"; ObjectID = "acm-qi-dRa"; */
+"acm-qi-dRa.title" = "アルバム";
+
+/* Class = "UIButton"; normalTitle = "Unsubsribe"; ObjectID = "eRI-74-TPi"; */
+"eRI-74-TPi.normalTitle" = "アカウントを削除する";
+
+/* Class = "UIButton"; normalTitle = "Create"; ObjectID = "mcM-Zs-pbu"; */
+"mcM-Zs-pbu.normalTitle" = "新規登録";
+
+/* Class = "UITabBarItem"; title = "About"; ObjectID = "nCC-EK-Nw3"; */
+"nCC-EK-Nw3.title" = "その他";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "pGe-dC-XES"; */
+"pGe-dC-XES.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Show providers"; ObjectID = "qao-DN-XxD"; */
+"qao-DN-XxD.normalTitle" = "メールアドレス確認";
+
+/* Class = "UILabel"; text = "Label"; ObjectID = "sbe-LK-F4Y"; */
+"sbe-LK-F4Y.text" = "Label";
+
+/* Class = "UIButton"; normalTitle = "Down"; ObjectID = "uGu-Jd-LVd"; */
+"uGu-Jd-LVd.normalTitle" = "Down";
+
+/* Class = "UIButton"; normalTitle = "Sign In"; ObjectID = "wL0-a7-rjd"; */
+"wL0-a7-rjd.normalTitle" = "Sign In";
+
+/* Class = "UITextField"; placeholder = "email"; ObjectID = "wbF-2B-o4z"; */
+"wbF-2B-o4z.placeholder" = "メールアドレス";
+
+/* Class = "UILabel"; text = "There are no songs downloaded. When you download from the search screen, songs are displayed."; ObjectID = "wik-ay-9sE"; */
+"wik-ay-9sE.text" = "ダウンロードされた曲がありません。検索画面からダウンロードすると、曲が表示されます。";
+
+/* Class = "UITabBarItem"; title = "Library"; ObjectID = "zNr-ju-0yw"; */
+"zNr-ju-0yw.title" = "ライブラリ";
+
+/* Class = "UITabBarItem"; title = "Search"; ObjectID = "ztq-8j-21q"; */
+"ztq-8j-21q.title" = "検索";

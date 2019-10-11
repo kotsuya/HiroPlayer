@@ -1,0 +1,105 @@
+name: CodableFirebase, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 0.2.1
+
+name: Firebase, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 5.13.0
+
+name: FirebaseABTesting, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 2.0.0
+
+name: FirebaseAnalytics, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 5.3.0
+
+name: FirebaseAnalyticsInterop, nameSpecified: 
+body: 
+                   …
+version: 1.1.0
+
+name: FirebaseAuth, nameSpecified: 
+body: 
+                   …
+version: 5.0.5
+
+name: FirebaseAuthInterop, nameSpecified: 
+body: 
+                   …
+version: 1.0.0
+
+name: FirebaseCore, nameSpecified: 
+body: 
+                   …
+version: 5.1.8
+
+name: FirebaseDatabase, nameSpecified: 
+body: 
+                   …
+version: 5.0.3
+
+name: FirebaseDynamicLinks, nameSpecified: 
+body: 
+                   …
+version: 3.2.0
+
+name: FirebaseInstanceID, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 3.3.0
+
+name: FirebaseMessaging, nameSpecified: 
+body: 
+                   …
+version: 3.2.1
+
+name: FirebaseRemoteConfig, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 3.1.0
+
+name: FirebaseStorage, nameSpecified: 
+body: 
+                   …
+version: 3.0.3
+
+name: GoogleAppMeasurement, nameSpecified: 
+body: Copyright 2018 Googl…
+version: 5.3.0
+
+name: GoogleUtilities, nameSpecified: 
+body: 
+                   …
+version: 5.3.6
+
+name: GTMSessionFetcher, nameSpecified: 
+body: 
+                   …
+version: 1.2.1
+
+name: Kingfisher, nameSpecified: 
+body: The MIT License (MIT…
+version: 4.10.1
+
+name: leveldb-library, nameSpecified: 
+body: Copyright (c) 2011 T…
+version: 1.20
+
+name: LicensePlist, nameSpecified: 
+body: MIT License
+
+Copyrig…
+version: 1.9.1
+
+name: nanopb, nameSpecified: 
+body: Copyright (c) 2011 P…
+version: 0.3.901
+
+name: Protobuf, nameSpecified: 
+body: Copyright 2008 Googl…
+version: 3.6.1
+
+add-version-numbers: false
+
+LicensePlist Version: 1.8.3
