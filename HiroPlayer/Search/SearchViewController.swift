@@ -44,6 +44,7 @@ enum ListType: Int {
 
 class SearchViewController: UIViewController {
     
+    @IBOutlet weak var bottomConst: NSLayoutConstraint!
     @IBOutlet weak var tableView: UITableView!{
         didSet {
             tableView.tableFooterView = UIView(frame: CGRect.zero)
@@ -65,24 +66,18 @@ class SearchViewController: UIViewController {
     
     var newPlaybackItems = [PlaybackItem]()
     
-    var refreshControl: UIRefreshControl!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         self.title = NSLocalizedString("Search", comment: "Search")
         
-        refreshControl = UIRefreshControl()
-        refreshControl.attributedTitle = NSAttributedString(string: "Pull to refresh")
-        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
-        tableView.addSubview(refreshControl)
+        setTableViewItems()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setTableViewItems()
         
-        searchBar.text = ""        
+        searchBar.text = ""
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -209,63 +204,51 @@ class SearchViewController: UIViewController {
         self.present(alert, animated: true, completion: nil)
     }
 
-    @objc func refresh(_ sender: UIRefreshControl) {
-        getPlaybackItems(completion: { _ in
-            self.refreshControl.endRefreshing()
-        })
-    }
-    
     private func setTableViewItems() {
-        showSpinner {
-            self.getPlaybackItems(completion: { success in
-                self.hideSpinner { }
-            })
-        }
-    }
-    
-    private func getPlaybackItems(completion:@escaping (Bool) -> Void) {
-        var tmpPlaybackItems = [PlaybackItem]()
-        newPlaybackItems.removeAll()
-        
-        self.ref.child("music/").observeSingleEvent(of: .value, with: { (snapshot) in
-            if let value = snapshot.value as? NSDictionary {
-                for key in value.allKeys {
-                    guard let item = value[key] else { return }
-                    do {
-                        let playbackItem = try FirebaseDecoder().decode(PlaybackItem.self, from: item)
-                        if let createdAt = playbackItem.createdAt {
-                            let timeInterval = createdAt.timeIntervalSinceReferenceDate
-                            let date = Int(timeInterval).dateFromMilliseconds()
-                            if date.isInDayBeforeYesterday {
-                                self.newPlaybackItems.append(playbackItem)
-                            } else {
-                                if playbackItem.release == "private" {
-                                    if playbackItem.addBy == Auth.auth().currentUser?.email {
+        self.ref.child("music/").observe(.value, with: { (snapshot) in
+            self.showSpinner {
+                var tmpPlaybackItems = [PlaybackItem]()
+                self.newPlaybackItems.removeAll()
+
+                if let value = snapshot.value as? NSDictionary {
+                    for key in value.allKeys {
+                        guard let item = value[key] else { return }
+                        do {
+                            let playbackItem = try FirebaseDecoder().decode(PlaybackItem.self, from: item)
+                            if let createdAt = playbackItem.createdAt {
+                                let timeInterval = createdAt.timeIntervalSinceReferenceDate
+                                let date = Int(timeInterval).dateFromMilliseconds()
+                                if date.isInDayBeforeYesterday {
+                                    self.newPlaybackItems.append(playbackItem)
+                                } else {
+                                    if playbackItem.release == "private" {
+                                        if playbackItem.addBy == Auth.auth().currentUser?.email {
+                                            tmpPlaybackItems.append(playbackItem)
+                                        }
+                                    } else {
                                         tmpPlaybackItems.append(playbackItem)
                                     }
-                                } else {
-                                    tmpPlaybackItems.append(playbackItem)
                                 }
                             }
+                        } catch let error {
+                            print(error)
                         }
-                    } catch let error {
-                        print(error)
+                    }
+                    if self.newPlaybackItems.hasItems() {
+                        self.newPlaybackItems.sort(by: {$0.downloadCount > $1.downloadCount})
+                    }
+                    if tmpPlaybackItems != self.playbackItems  {
+                        self.playbackItems = tmpPlaybackItems
+                        self.playbackItems.sort(by: {$0.downloadCount > $1.downloadCount})
+                        self.allPlaybackItems = self.playbackItems
+                        self.tableView.reloadData()
                     }
                 }
-                if self.newPlaybackItems.hasItems() {
-                    self.newPlaybackItems.sort(by: {$0.downloadCount > $1.downloadCount})
+                    self.hideSpinner { }
                 }
-                if tmpPlaybackItems != self.playbackItems  {
-                    self.playbackItems = tmpPlaybackItems
-                    self.playbackItems.sort(by: {$0.downloadCount > $1.downloadCount})
-                    self.allPlaybackItems = self.playbackItems
-                    self.tableView.reloadData()
-                }
-            }
-            completion(true)
-        }) { (error) in
-            self.showMessagePrompt(error.localizedDescription)
-            completion(false)
+            }) { (error) in
+                self.showMessagePrompt(error.localizedDescription)
+                self.hideSpinner { }
         }
     }
     
@@ -290,10 +273,10 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if newPlaybackItems.hasItems() {
             if section == 0 {
-                return NSLocalizedString("New", comment: "New")
+                return NSLocalizedString("New", comment: "New") + "(\(newPlaybackItems.count))"
             }
         }
-        return NSLocalizedString("Ranking", comment: "Ranking")
+        return NSLocalizedString("Ranking", comment: "Ranking") + "(\(playbackItems.count))"
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -373,6 +356,20 @@ extension SearchViewController: UISearchBarDelegate {
     
     func searchBarSearchButtonClicked(_ searchBar: UISearchBar) {
         guard let txt = searchBar.text else { return }
+        search(txt)
+    }
+    
+    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
+        searchBar.resignFirstResponder()
+        searchBar.text = ""
+        search("") // "" -> search All
+    }
+    
+    private func isNewItem(_ indexPath: IndexPath) -> Bool {
+        return newPlaybackItems.hasItems() && indexPath.section == 0
+    }
+    
+    private func search(_ txt: String) {
         showSpinner {
             var tmpPlaybackItems = [PlaybackItem]()
             
@@ -403,17 +400,7 @@ extension SearchViewController: UISearchBarDelegate {
                 self.hideSpinner { }
             })
         }
-    }
-    
-    func searchBarCancelButtonClicked(_ searchBar: UISearchBar) {
-        
-        searchBar.resignFirstResponder()
-        
-        setTableViewItems()
-    }
-    
-    private func isNewItem(_ indexPath: IndexPath) -> Bool {
-        return newPlaybackItems.hasItems() && indexPath.section == 0
+
     }
 }
 

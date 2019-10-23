@@ -10,13 +10,7 @@ import UIKit
 import AVFoundation
 import Firebase
 
-protocol PlayerViewControllerDelegate: class {
-    func update(_ progress: CGFloat)
-}
-
 class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
-    
-    weak var delegate: PlayerViewControllerDelegate?
     
     private var originFrame = CGRect(x: 0, y: 0, width: 0, height: 1)
     
@@ -81,14 +75,7 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         player = appDelegate.player
         
-        player.playItem(firstItem)
-        
         configureTimer()
-        
-        if Const.hasNotch {
-            let pan = UIPanGestureRecognizer(target: self, action: #selector(handlePan(gesture:)))
-            view.addGestureRecognizer(pan)
-        }
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -246,74 +233,6 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
         let ssString = (ss < 10 ? "0" : "") + String(ss)
         
         return (hhString != nil ? (hhString! + ":") : "") + mmString + ":" + ssString
-    }
-    
-    func animateContentChange(_ transitionSubtype: String, layer: CALayer) {
-        let transition = CATransition()
-        
-        transition.duration = 0.25
-        transition.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        transition.type = CATransitionType.push
-        transition.subtype = CATransitionSubtype(rawValue: transitionSubtype)
-        
-        layer.add(transition, forKey: kCATransition)
-    }
-    
-    func animateNoPreviousTrackBounce(_ layer: CALayer) {
-        animateBounce(fromValue: NSNumber(value: 0 as Int), toValue: NSNumber(value: 25 as Int), layer: layer)
-    }
-    
-    func animateNoNextTrackBounce(_ layer: CALayer) {
-        animateBounce(fromValue: NSNumber(value: 0 as Int), toValue: NSNumber(value: -25 as Int), layer: layer)
-    }
-    
-    func animateBounce(fromValue: NSNumber, toValue: NSNumber, layer: CALayer) {
-        let animation = CABasicAnimation(keyPath: "transform.translation.x")
-        animation.fromValue = fromValue
-        animation.toValue = toValue
-        animation.duration = 0.1
-        animation.repeatCount = 1
-        animation.autoreverses = true
-        animation.isRemovedOnCompletion = true
-        animation.timingFunction = CAMediaTimingFunction(name: CAMediaTimingFunctionName.easeInEaseOut)
-        
-        layer.add(animation, forKey: "Animation")
-    }
-    
-    // MARK: -
-    
-    @objc private func handleTap(_ sender: UITapGestureRecognizer) {
-        dismiss(animated: true, completion: nil)
-    }
-    
-    @objc private func handlePan(gesture: UIPanGestureRecognizer) {
-        let viewTransition = gesture.translation(in: view)
-        let progress = viewTransition.y / (originFrame.height - Const.MusicPlayBarHeight)
-        switch gesture.state {
-        case .began:
-            originFrame = view.frame
-        case .changed:
-            update(progress)
-        case .cancelled:
-            break
-        case .ended:
-            if progress > 0.2 {
-                dismiss(animated: true, completion: nil)
-            } else {
-                UIView.animate(withDuration: 0.2 + 0.2 * Double(progress), delay: 0, options: .curveEaseInOut, animations: {
-                    self.delegate?.update(0)
-                    self.view.frame = self.originFrame
-                })
-            }
-            break
-        default:
-            break
-        }
-    }
-    
-    private func update(_ progress: CGFloat) {
-        delegate?.update(progress)
-        view.frame = CGRect(x: 0, y: originFrame.origin.y + (originFrame.height - Const.MusicPlayBarHeight) * progress, width: view.bounds.width, height: view.bounds.height)
     }
 }
 

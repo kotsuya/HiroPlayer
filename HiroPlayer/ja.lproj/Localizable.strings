@@ -21,7 +21,7 @@
 
 //Search
 "Search" = "検索";
-"Purchase_Confirm_Message" = "このアプリはテスト版なので課金されません。課金される場合はアップルパスワードを聞きます。";
+"Purchase_Confirm_Message" = "ダウンロードしますか？";
 "All" = "すべて";
 "Purchase" = "購入済み";
 "Available" = "未購入";

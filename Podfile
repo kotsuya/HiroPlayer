@@ -15,8 +15,7 @@ target 'HiroPlayer' do
   pod 'Firebase/DynamicLinks'
 
   pod 'CodableFirebase'
-  pod 'LicensePlist'
-  pod 'ReachabilitySwift'  
+  pod 'LicensePlist'  
   pod 'Kingfisher'
   
   pod 'Fabric', '~> 1.10.2'

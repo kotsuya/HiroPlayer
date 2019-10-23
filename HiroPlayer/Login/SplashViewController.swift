@@ -8,14 +8,11 @@
 
 import UIKit
 import Firebase
-import Reachability
 
 class SplashViewController: UIViewController {
 
     private var remoteConfig : RemoteConfig!
     var handle: AuthStateDidChangeListenerHandle!
-    
-    let reachability = Reachability()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -34,11 +31,7 @@ class SplashViewController: UIViewController {
             }
             
             self?.displayWelcome()
-        }
-        
-        //pod 'ReachabilitySwift'
-        NotificationCenter.default.addObserver(self, selector: #selector(self.reachabilityChanged), name: .reachabilityChanged, object: reachability)
-        ((try? reachability?.startNotifier()) as ()??)
+        }        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -46,23 +39,7 @@ class SplashViewController: UIViewController {
         
         Auth.auth().removeStateDidChangeListener(handle)
     }
-    
-    @objc func reachabilityChanged() {
-        //print(Reachability()?.connection)
-        if let reachability = reachability {
-            reachability.whenReachable = { reachability in
-                if reachability.connection == .wifi {
-                    print("Reachable via WiFi")
-                } else {
-                    print("Reachable via Cellular")
-                }
-            }
-            reachability.whenUnreachable = { _ in
-                print("Not reachable")
-            }
-        }
-    }
-    
+  
     private func displayWelcome() {
         let caps = remoteConfig["splash_message_caps"].boolValue
         let message = remoteConfig["splash_message"].stringValue

@@ -65,10 +65,6 @@ class PlayBarView: UIView {
         playPauseButton.isSelected = self.player.isPlaying
     }
     
-    func hasCurrentItem() -> Bool {
-        return player.currentPlaybackItem != nil
-    }
-    
     @IBAction func buttonAction(_ sender: UIButton) {
         switch sender.tag {
             case 0: //play

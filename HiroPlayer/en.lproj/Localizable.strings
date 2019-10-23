@@ -21,7 +21,7 @@
 
 //Search
 "Search" = "Search";
-"Purchase_Confirm_Message" = "This application is a test version so it will not be charged. If you are charged you will be asked for an Apple password.";
+"Purchase_Confirm_Message" = "Do you want to download it?";
 "All" = "All";
 "Purchase" = "Purchase";
 "Available" = "Available";

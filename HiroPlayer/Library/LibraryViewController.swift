@@ -17,6 +17,8 @@ private let audioEx = ["m4a","mp3","wav","caf","mp4"]
 
 class LibraryViewController: UIViewController {
 
+    @IBOutlet weak var bottomConst: NSLayoutConstraint!
+    
     fileprivate var longPressGesture: UILongPressGestureRecognizer!
     
     @IBOutlet weak var collectionView: UICollectionView!
@@ -209,8 +211,7 @@ extension LibraryViewController: UICollectionViewDelegate {
 
         } else {
             if let tabbarController = self.tabBarController as? TabBarController {
-                tabbarController.setPlayListCurrentItem(playbackItems[indexPath.row])
-                tabbarController.presentPlayerView()
+                tabbarController.presentPlayerView(playbackItems[indexPath.row])
                 //selected から元に戻す
                 collectionView.reloadItems(at: [indexPath])
             }

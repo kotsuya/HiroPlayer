@@ -47,21 +47,17 @@ class TabBarController: UITabBarController {
     }
     
     @objc func handleTap(_ sender: UITapGestureRecognizer) {
-        presentPlayerView()
+        presentPlayerView(nil)
     }
     
-    func presentPlayerView() {
+    func presentPlayerView(_ item: PlaybackItem?) {
+        if let item = item {
+            playBar.player.playItem(item)
+        }
+                
         present(playerViewController, animated: true, completion: {
             self.playBar.isHidden = false
         })
-    }
-    
-    func setPlayListCurrentItem(_ item: PlaybackItem) {
-        if playBar.hasCurrentItem() {
-            playBar.player.playItem(item)
-        } else {
-            playerViewController.firstItem = item
-        }
     }
     
     //MARK: - Notifications
