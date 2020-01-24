@@ -39,8 +39,14 @@ class PlayBarView: UIView {
     
     func loadNib(){
         let view = Bundle.main.loadNibNamed("PlayBarView", owner: self, options: nil)?.first as! UIView
-        view.frame = self.bounds
-        view.border(width: 1.0, color: .black, cornerRadius: 0)
+        view.frame = self.bounds.insetBy(dx: 4, dy: 4)
+
+        // 影の設定
+        view.layer.shadowOpacity = 0.5
+        //view.layer.shadowRadius = 10
+        view.layer.shadowColor = UIColor.black.cgColor
+        view.layer.shadowOffset = CGSize(width: 2, height: 2)
+        
         self.addSubview(view)
         
         let appDelegate = UIApplication.shared.delegate as! AppDelegate

@@ -41,6 +41,8 @@ class LibraryViewController: UIViewController {
         collectionView.addGestureRecognizer(longPressGesture)
         
         syncLibraryFavoriteList()
+        
+        collectionView.register(UICollectionReusableView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: "FooterView")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -202,6 +204,16 @@ extension LibraryViewController: UICollectionViewDataSource {
         
         LibraryManager.shared.setPlaybackItem(playbackItems)
     }
+    
+    func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
+        switch kind {
+        case UICollectionView.elementKindSectionFooter:
+            let footerView = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "FooterView", for: indexPath)           
+            return footerView
+        default:
+            fatalError("Unexpected element kind")
+        }
+    }
 }
 
 extension LibraryViewController: UICollectionViewDelegate {
@@ -228,5 +240,9 @@ extension LibraryViewController: UICollectionViewDelegateFlowLayout {
     
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         return viewInset
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, referenceSizeForFooterInSection section: Int) -> CGSize {
+        return CGSize(width: view.frame.width, height: Const.MusicPlayBarHeight)
     }
 }

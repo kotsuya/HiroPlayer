@@ -19,12 +19,7 @@ enum AlbumViewType: String {
 
 class AlbumViewController: UIViewController {
     
-    @IBOutlet weak var tableView: UITableView!{
-        didSet {
-            tableView.tableFooterView = UIView(frame: CGRect.zero)
-        }
-    }
-    
+    @IBOutlet weak var tableView: UITableView!
     let ref = Database.database().reference()
     let storageRef = Storage.storage().reference()
     var refreshControl: UIRefreshControl!
@@ -278,6 +273,14 @@ extension AlbumViewController: UITableViewDelegate {
             self.navigationController?.pushViewController(vc, animated: true)
         }
         tableView.deselectRow(at: indexPath, animated: false)
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+           return Const.MusicPlayBarHeight
+    }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        return UIView()
     }
 }
 

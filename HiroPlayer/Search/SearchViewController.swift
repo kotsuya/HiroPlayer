@@ -45,11 +45,7 @@ enum ListType: Int {
 class SearchViewController: UIViewController {
     
     @IBOutlet weak var bottomConst: NSLayoutConstraint!
-    @IBOutlet weak var tableView: UITableView!{
-        didSet {
-            tableView.tableFooterView = UIView(frame: CGRect.zero)
-        }
-    }
+    @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var searchBar: UISearchBar!
     @IBOutlet weak var listTypeButton: UIBarButtonItem! {
         didSet {
@@ -311,6 +307,20 @@ extension SearchViewController: UITableViewDataSource {
         }
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+        if tableView.numberOfSections == 2 {
+            return section == 0 ? 0 : Const.MusicPlayBarHeight
+        }
+        return Const.MusicPlayBarHeight
+    }
+
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        if tableView.numberOfSections == 2 {
+            return section == 0 ? nil : UIView()
+        }
+        return UIView()
     }
 }
 
