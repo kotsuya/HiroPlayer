@@ -45,6 +45,7 @@
 		9E2F8ADD21A03B3100A4E68C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8ADC21A03B3100A4E68C /* UIColor+Extension.swift */; };
 		9E2F8ADF21A03D5F00A4E68C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8ADE21A03D5F00A4E68C /* LoginViewController.swift */; };
 		9E44E101222A436300856CA4 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E44E100222A436300856CA4 /* Date+Extension.swift */; };
+		C6A3A06F2457E89E00859E72 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = C6A3A06E2457E89E00859E72 /* GoogleService-Info.plist */; };
 		C6AB94E8232B5E2D00E0D8DD /* AlbumViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AB94E7232B5E2D00E0D8DD /* AlbumViewController.swift */; };
 		C6AB970C232B920200E0D8DD /* AlbumCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6AB970B232B920200E0D8DD /* AlbumCell.swift */; };
 		C6B1EB802332172600101D38 /* Helper.swift in Sources */ = {isa = PBXBuildFile; fileRef = C6B1EB7F2332172600101D38 /* Helper.swift */; };
@@ -96,6 +97,7 @@
 		9E2F8AE121A04D6900A4E68C /* HiroPlayer.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = HiroPlayer.entitlements; sourceTree = "<group>"; };
 		9E44E100222A436300856CA4 /* Date+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		9E87EF5921CE90310020C34F /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/LaunchScreen.strings; sourceTree = "<group>"; };
+		C6A3A06E2457E89E00859E72 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		C6AB94E7232B5E2D00E0D8DD /* AlbumViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumViewController.swift; sourceTree = "<group>"; };
 		C6AB970B232B920200E0D8DD /* AlbumCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlbumCell.swift; sourceTree = "<group>"; };
 		C6B1EB7E2331EC5400101D38 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Main.strings; sourceTree = "<group>"; };
@@ -136,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				317ECC17219BC79A00DA437B /* AppDelegate.swift */,
+				C6A3A06E2457E89E00859E72 /* GoogleService-Info.plist */,
 				C66E9A68245647BD006BD811 /* Common */,
 				9E017DDB2276AF6300F9531F /* PlayBar */,
 				9E2F8AE021A03D6500A4E68C /* Login */,
@@ -354,6 +357,7 @@
 				9E017DDD2276B06F00F9531F /* PlayBarView.xib in Resources */,
 				317ECC1D219BC79A00DA437B /* Main.storyboard in Resources */,
 				9E2F8ADB21A03AE500A4E68C /* RemoteConfigDefaults.plist in Resources */,
+				C6A3A06F2457E89E00859E72 /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
