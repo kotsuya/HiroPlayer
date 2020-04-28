@@ -41,7 +41,6 @@
 		9E017DDD2276B06F00F9531F /* PlayBarView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 9E017DDC2276B06F00F9531F /* PlayBarView.xib */; };
 		9E2D0C2E21D586A7001CE058 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 9E2D0C3021D586A7001CE058 /* Localizable.strings */; };
 		9E2F8AD721A0395F00A4E68C /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8AD621A0395F00A4E68C /* SplashViewController.swift */; };
-		9E2F8AD921A03AA100A4E68C /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */; };
 		9E2F8ADB21A03AE500A4E68C /* RemoteConfigDefaults.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */; };
 		9E2F8ADD21A03B3100A4E68C /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8ADC21A03B3100A4E68C /* UIColor+Extension.swift */; };
 		9E2F8ADF21A03D5F00A4E68C /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2F8ADE21A03D5F00A4E68C /* LoginViewController.swift */; };
@@ -91,7 +90,6 @@
 		9E2D0C2F21D586A7001CE058 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E2D0C3121D586AA001CE058 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E2F8AD621A0395F00A4E68C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		9E2F8ADC21A03B3100A4E68C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9E2F8ADE21A03D5F00A4E68C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -251,7 +249,6 @@
 		C66E9A6924564803006BD811 /* Resouces */ = {
 			isa = PBXGroup;
 			children = (
-				9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */,
 				9E2F8AE121A04D6900A4E68C /* HiroPlayer.entitlements */,
 				9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */,
 				317ECC1B219BC79A00DA437B /* Main.storyboard */,
@@ -357,7 +354,6 @@
 				9E017DDD2276B06F00F9531F /* PlayBarView.xib in Resources */,
 				317ECC1D219BC79A00DA437B /* Main.storyboard in Resources */,
 				9E2F8ADB21A03AE500A4E68C /* RemoteConfigDefaults.plist in Resources */,
-				9E2F8AD921A03AA100A4E68C /* GoogleService-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
