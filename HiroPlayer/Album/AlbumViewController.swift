@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by seunghwan.yoo on 2019/09/13.
-//  Copyright © 2019 nakazato. All rights reserved.
+//  Copyright © 2019 Yoo. All rights reserved.
 //
 
 import UIKit
@@ -21,6 +21,7 @@ class AlbumViewController: UIViewController {
     
     @IBOutlet weak var tableView: UITableView!
     let ref = Database.database().reference()
+    let storage = Storage.storage()
     let storageRef = Storage.storage().reference()
     var refreshControl: UIRefreshControl!
     
@@ -70,7 +71,6 @@ class AlbumViewController: UIViewController {
     }
     
     private func download(_ tag: Int) {
-        let storage = Storage.storage()
         let storageReference = storage.reference().child(dataPath).child("\(myItems[tag])")
         
         let path = "\(dataPath)/\(myItems[tag])"
@@ -96,7 +96,6 @@ class AlbumViewController: UIViewController {
     }
     
     @objc private func downloadAll(_ sender: UIBarButtonItem) {
-        let storage = Storage.storage()
         let storageReference = storage.reference().child(dataPath)
         showSpinner {
             storageReference.listAll { (result, error) in
@@ -116,7 +115,7 @@ class AlbumViewController: UIViewController {
                             continue
                         }
                         
-                        let ref = storage.reference().child("\(path)")
+                        let ref = self.storage.reference().child("\(path)")
                         let downloadTask = ref.write(toFile: localURL)
                         downloadTask.observe(.progress) { snapshot in
                             // Download reported progress
@@ -168,7 +167,7 @@ class AlbumViewController: UIViewController {
             }
         }
         
-        let item = PlaybackItem(uid: "", artistName: artist, trackTitle: title, description: "Album", release: "public", addBy: "", trackUrl: "\(path)", artworkUrl: "\(path).png", artworkWebUrl: "", downloadCount: 0, createdAt: Date())
+        let item = PlaybackItem(uid: "", artistName: artist, trackTitle: title, description: "Album", release: "public", addBy: "", trackUrl: "\(path)", artworkUrl: "\(path).png", artworkWebUrl: "", downloadCount: 0, createdAt: Date(), youtubeId: nil, lyrics: nil)
 
         LibraryManager.shared.addLibrary(item)
     }

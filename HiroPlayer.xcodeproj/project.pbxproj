@@ -91,7 +91,7 @@
 		9E2D0C2F21D586A7001CE058 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E2D0C3121D586AA001CE058 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E2F8AD621A0395F00A4E68C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		9E2F8ADC21A03B3100A4E68C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9E2F8ADE21A03D5F00A4E68C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -137,26 +137,17 @@
 		317ECC16219BC79A00DA437B /* HiroPlayer */ = {
 			isa = PBXGroup;
 			children = (
-				C6AB94E4232B5E0E00E0D8DD /* Album */,
+				317ECC17219BC79A00DA437B /* AppDelegate.swift */,
+				C66E9A68245647BD006BD811 /* Common */,
 				9E017DDB2276AF6300F9531F /* PlayBar */,
 				9E2F8AE021A03D6500A4E68C /* Login */,
 				317ECC31219BCC3700DA437B /* Library */,
+				C66E9A6724564674006BD811 /* Player */,
 				317ECC3B219BF60200DA437B /* Search */,
+				C6AB94E4232B5E0E00E0D8DD /* Album */,
 				317ECC3E219D35BA00DA437B /* About */,
 				317ECC36219BCF5D00DA437B /* Extension */,
-				9E2F8AE121A04D6900A4E68C /* HiroPlayer.entitlements */,
-				9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */,
-				9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */,
-				317ECC17219BC79A00DA437B /* AppDelegate.swift */,
-				317ECC45219D5D0E00DA437B /* AudioPlayer.swift */,
-				317ECC49219D71D000DA437B /* PlaybackItem.swift */,
-				317ECC1B219BC79A00DA437B /* Main.storyboard */,
-				317ECC1E219BC79D00DA437B /* Assets.xcassets */,
-				317ECC20219BC79D00DA437B /* LaunchScreen.storyboard */,
-				317ECC23219BC79D00DA437B /* Info.plist */,
-				315017FA21A4FB2200000955 /* ImageCache.swift */,
-				9E2D0C3021D586A7001CE058 /* Localizable.strings */,
-				9E017DD92276820300F9531F /* Const.swift */,
+				C66E9A6924564803006BD811 /* Resouces */,
 			);
 			path = HiroPlayer;
 			sourceTree = "<group>";
@@ -165,11 +156,8 @@
 			isa = PBXGroup;
 			children = (
 				317ECC2D219BCAAE00DA437B /* LibraryViewController.swift */,
-				317ECC29219BC8DE00DA437B /* PlayerViewController.swift */,
 				317ECC32219BCC8900DA437B /* LibraryCell.swift */,
-				317ECC43219D50CA00DA437B /* PlayerCell.swift */,
 				3160CB1221CCBE620027DA93 /* LibraryManager.swift */,
-				C6B1EB7F2332172600101D38 /* Helper.swift */,
 			);
 			path = Library;
 			sourceTree = "<group>";
@@ -239,6 +227,42 @@
 			path = Login;
 			sourceTree = "<group>";
 		};
+		C66E9A6724564674006BD811 /* Player */ = {
+			isa = PBXGroup;
+			children = (
+				317ECC29219BC8DE00DA437B /* PlayerViewController.swift */,
+				317ECC43219D50CA00DA437B /* PlayerCell.swift */,
+			);
+			path = Player;
+			sourceTree = "<group>";
+		};
+		C66E9A68245647BD006BD811 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				317ECC45219D5D0E00DA437B /* AudioPlayer.swift */,
+				C6B1EB7F2332172600101D38 /* Helper.swift */,
+				317ECC49219D71D000DA437B /* PlaybackItem.swift */,
+				315017FA21A4FB2200000955 /* ImageCache.swift */,
+				9E017DD92276820300F9531F /* Const.swift */,
+			);
+			path = Common;
+			sourceTree = "<group>";
+		};
+		C66E9A6924564803006BD811 /* Resouces */ = {
+			isa = PBXGroup;
+			children = (
+				9E2F8AE121A04D6900A4E68C /* HiroPlayer.entitlements */,
+				9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */,
+				9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */,
+				317ECC1B219BC79A00DA437B /* Main.storyboard */,
+				317ECC20219BC79D00DA437B /* LaunchScreen.storyboard */,
+				317ECC1E219BC79D00DA437B /* Assets.xcassets */,
+				317ECC23219BC79D00DA437B /* Info.plist */,
+				9E2D0C3021D586A7001CE058 /* Localizable.strings */,
+			);
+			path = Resouces;
+			sourceTree = "<group>";
+		};
 		C6AB94E4232B5E0E00E0D8DD /* Album */ = {
 			isa = PBXGroup;
 			children = (
@@ -269,7 +293,6 @@
 				317ECC11219BC79A00DA437B /* Frameworks */,
 				317ECC12219BC79A00DA437B /* Resources */,
 				AC47CCC417D7C6C153162E4C /* [CP] Embed Pods Frameworks */,
-				C69728D722F1504300AD4C51 /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -375,24 +398,6 @@
 			shellPath = /bin/sh;
 			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
-		};
-		C69728D722F1504300AD4C51 /* ShellScript */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-				"$(BUILT_PRODUCTS_DIR)/$(INFOPLIST_PATH)",
-			);
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Fabric/run\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -594,12 +599,12 @@
 			baseConfigurationReference = 1687B3C32CB445C04074C911 /* Pods-HiroPlayer.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HiroPlayer/HiroPlayer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HiroPlayer/Resouces/HiroPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.16;
+				CURRENT_PROJECT_VERSION = 1.0.0.17;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PCGV2BY5QK;
-				INFOPLIST_FILE = HiroPlayer/Info.plist;
+				INFOPLIST_FILE = HiroPlayer/Resouces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -616,12 +621,12 @@
 			baseConfigurationReference = 03D35BF0186B474F7A1811E7 /* Pods-HiroPlayer.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_ENTITLEMENTS = HiroPlayer/HiroPlayer.entitlements;
+				CODE_SIGN_ENTITLEMENTS = HiroPlayer/Resouces/HiroPlayer.entitlements;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1.0.0.16;
+				CURRENT_PROJECT_VERSION = 1.0.0.17;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				DEVELOPMENT_TEAM = PCGV2BY5QK;
-				INFOPLIST_FILE = HiroPlayer/Info.plist;
+				INFOPLIST_FILE = HiroPlayer/Resouces/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

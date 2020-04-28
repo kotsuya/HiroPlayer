@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by seunghwan.yoo on 2019/09/18.
-//  Copyright © 2019 nakazato. All rights reserved.
+//  Copyright © 2019 Yoo. All rights reserved.
 //
 
 import Foundation
@@ -70,4 +70,17 @@ class Helper {
     func isFileExist(_ playItem:PlaybackItem) -> Bool {
         return self.isFileExist(playItem.trackUrl)
     }
+    
+    // MARK: - common func
+    func playInYoutube(_ youtubeId: String) {
+        if let youtubeURL = URL(string: "youtube://\(youtubeId)"),
+            UIApplication.shared.canOpenURL(youtubeURL) {
+            // redirect to app
+            UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
+        } else if let youtubeURL = URL(string: "https://www.youtube.com/watch?v=\(youtubeId)") {
+            // redirect through safari
+            UIApplication.shared.open(youtubeURL, options: [:], completionHandler: nil)
+        }
+    }
+    
 }

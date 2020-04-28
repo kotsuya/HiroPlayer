@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by Yoo on 2018/11/14.
-//  Copyright © 2018年 nakazato. All rights reserved.
+//  Copyright © 2018年 Yoo. All rights reserved.
 //
 
 import UIKit
@@ -103,7 +103,7 @@ class SearchViewController: UIViewController {
         
         let index = int2IndexPath(sender.tag)
         var playItem: PlaybackItem = playbackItems[index.row]
-        if isNewItem(index) {
+        if hasNewItem(index) {
             playItem = newPlaybackItems[index.row]
         }
         
@@ -163,7 +163,7 @@ class SearchViewController: UIViewController {
             self.ref.child("music/"+uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 let downloadCnt = Helper.shared.setDownloadCount(value, false, uid)
-                if self.isNewItem(indexPath) {
+                if self.hasNewItem(indexPath) {
                     self.newPlaybackItems[indexPath.row].downloadCount = downloadCnt
                 } else {
                     self.playbackItems[indexPath.row].downloadCount = downloadCnt
@@ -186,7 +186,7 @@ class SearchViewController: UIViewController {
             self.ref.child("music/"+uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
                 let downloadCnt = Helper.shared.setDownloadCount(value, true, uid)
-                if self.isNewItem(indexPath) {
+                if self.hasNewItem(indexPath) {
                     self.newPlaybackItems[indexPath.row].downloadCount = downloadCnt
                 } else {
                     self.playbackItems[indexPath.row].downloadCount = downloadCnt
@@ -287,7 +287,7 @@ extension SearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "SearchCell", for: indexPath) as! SearchCell
         var item: PlaybackItem
-        if isNewItem(indexPath) {
+        if hasNewItem(indexPath) {
             item = newPlaybackItems[indexPath.row]
         } else {
             item = playbackItems[indexPath.row]
@@ -325,13 +325,27 @@ extension SearchViewController: UITableViewDataSource {
 }
 
 extension SearchViewController: UITableViewDelegate {
-    
+        
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         searchBar.resignFirstResponder()
-        
-        showMessagePrompt(NSLocalizedString("Preparing", comment: "Preparing"))
-        
+       
+        var item: PlaybackItem
+        if hasNewItem(indexPath) {
+            item = newPlaybackItems[indexPath.row]
+        } else {
+            item = playbackItems[indexPath.row]
+        }
+                            
+        if let youtubeId = item.youtubeId {
+            let title = item.trackTitle
+            self.showMessagePrompt(title, "Open the Youtube App", buttonHandler: {_ in
+                Helper.shared.playInYoutube(youtubeId)
+            })
+        } else {
+            showMessagePrompt("It doesn't have a YOUTUBE Id")
+        }
+
         tableView.deselectRow(at: indexPath, animated: true)
     }
 }
@@ -375,7 +389,7 @@ extension SearchViewController: UISearchBarDelegate {
         search("") // "" -> search All
     }
     
-    private func isNewItem(_ indexPath: IndexPath) -> Bool {
+    private func hasNewItem(_ indexPath: IndexPath) -> Bool {
         return newPlaybackItems.hasItems() && indexPath.section == 0
     }
     

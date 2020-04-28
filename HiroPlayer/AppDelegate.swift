@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by Yoo on 2018/11/14.
-//  Copyright © 2018年 nakazato. All rights reserved.
+//  Copyright © 2018年 Yoo. All rights reserved.
 //
 
 import UIKit
@@ -133,13 +133,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UNUserNotificationCenterD
         
         // TODO: If necessary send token to application server.
         // Note: This callback is fired at each app startup and whenever a new token is generated.
-    }
-    
-    //START data message
-    // Receive data messages on iOS 10+ directly from FCM (bypassing APNs) when the app is in the foreground.
-    // To enable direct data messages, you can set [Messaging messaging].shouldEstablishDirectChannel to YES.
-    func messaging(_ messaging: Messaging, didReceive remoteMessage: MessagingRemoteMessage) {
-        print("Received data message: \(remoteMessage.appData)")
     }
     
     func application(_ application: UIApplication, didFailToRegisterForRemoteNotificationsWithError error: Error) {

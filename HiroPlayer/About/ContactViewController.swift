@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by Yoo on 2018/11/24.
-//  Copyright © 2018 nakazato. All rights reserved.
+//  Copyright © 2018 Yoo. All rights reserved.
 //
 
 import UIKit

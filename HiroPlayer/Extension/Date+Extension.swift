@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by Yoo on 2019/02/27.
-//  Copyright © 2019年 nakazato. All rights reserved.
+//  Copyright © 2019年 Yoo. All rights reserved.
 //
 
 import Foundation

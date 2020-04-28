@@ -3,7 +3,7 @@
 //  HiroPlayer
 //
 //  Created by Yoo on 2018/11/15.
-//  Copyright © 2018年 nakazato. All rights reserved.
+//  Copyright © 2018年 Yoo. All rights reserved.
 //
 
 import Foundation
@@ -49,6 +49,9 @@ public struct PlaybackItem: Codable {
     var downloadCount: Int
     var createdAt: Date?
     //let updatedAt: String
+    
+    let youtubeId: String?
+    let lyrics: String?
 }
 
 extension PlaybackItem: Equatable {}

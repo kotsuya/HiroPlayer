@@ -13,11 +13,12 @@ target 'HiroPlayer' do
   pod 'Firebase/Storage'
   pod 'Firebase/Messaging'
   pod 'Firebase/DynamicLinks'
-
+  pod 'Firebase/Analytics'
+  
   pod 'CodableFirebase'
   pod 'LicensePlist'  
   pod 'Kingfisher'
   
-  pod 'Fabric', '~> 1.10.2'
-  pod 'Crashlytics', '~> 3.13.3'
+  pod 'SnapKit'
+  
 end
