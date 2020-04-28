@@ -91,7 +91,7 @@
 		9E2D0C2F21D586A7001CE058 /* ja */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ja; path = ja.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E2D0C3121D586AA001CE058 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 		9E2F8AD621A0395F00A4E68C /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
-		9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = RemoteConfigDefaults.plist; sourceTree = "<group>"; };
 		9E2F8ADC21A03B3100A4E68C /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9E2F8ADE21A03D5F00A4E68C /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -138,6 +138,7 @@
 			isa = PBXGroup;
 			children = (
 				317ECC17219BC79A00DA437B /* AppDelegate.swift */,
+				9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */,
 				C66E9A68245647BD006BD811 /* Common */,
 				9E017DDB2276AF6300F9531F /* PlayBar */,
 				9E2F8AE021A03D6500A4E68C /* Login */,
@@ -253,7 +254,6 @@
 			children = (
 				9E2F8AE121A04D6900A4E68C /* HiroPlayer.entitlements */,
 				9E2F8ADA21A03AE500A4E68C /* RemoteConfigDefaults.plist */,
-				9E2F8AD821A03AA100A4E68C /* GoogleService-Info.plist */,
 				317ECC1B219BC79A00DA437B /* Main.storyboard */,
 				317ECC20219BC79D00DA437B /* LaunchScreen.storyboard */,
 				317ECC1E219BC79D00DA437B /* Assets.xcassets */,
