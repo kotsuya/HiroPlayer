@@ -18,6 +18,8 @@
 //Player
 "Player" = "Player";
 "Player_list" = "Player List";
+"lyrics" = "lyrics";
+"refresh" = "refresh";
 
 //Search
 "Search" = "Search";

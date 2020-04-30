@@ -9,6 +9,7 @@
 import Foundation
 import Firebase
 import AVFoundation
+import CodableFirebase
 
 class Helper {
     
@@ -23,6 +24,38 @@ class Helper {
         self.ref.child("music/"+uid).updateChildValues(["downloadCount":downloadCnt])
         return downloadCnt
     }
+    
+    func getItem(_ item: PlaybackItem, result:@escaping(PlaybackItem?) -> Void) {
+        self.ref.child("music/"+item.uid).observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let value = snapshot.value as? NSDictionary else { return }
+            do {
+                let playItem = try FirebaseDecoder().decode(PlaybackItem.self, from: value)
+                result(playItem)
+            } catch let error {
+                print(error)
+                result(nil)
+            }
+        })
+    }
+    
+    func getAllItems(result:@escaping([PlaybackItem]) -> Void) {
+        self.ref.child("music/").observeSingleEvent(of: .value, with: { (snapshot) in
+            guard let value = snapshot.value as? NSDictionary else { return }
+            var playbackItems = [PlaybackItem]()
+            for key in value.allKeys {
+                guard let item = value[key] else { return }
+                do {
+                    let playItem = try FirebaseDecoder().decode(PlaybackItem.self, from: item)
+                    playbackItems.append(playItem)
+                } catch let error {
+                    print(error)
+                    result([])
+                }
+            }
+            result(playbackItems)
+        })
+    }
+
     
     // MARK: - delete
     func deleteAlbumSong(_ path: String) {
@@ -48,7 +81,7 @@ class Helper {
             try FileManager.default.removeItem(atPath: localUrlStr)
             self.ref.child("music/"+uid).observeSingleEvent(of: .value, with: { (snapshot) in
                 let value = snapshot.value as? NSDictionary
-                _ = Helper.shared.setDownloadCount(value, false, uid)
+                _ = self.setDownloadCount(value, false, uid)
                 LibraryManager.shared.removeLibrary(playItem)
                 LibraryManager.shared.removeFavorite(playItem)
             }) { (error) in

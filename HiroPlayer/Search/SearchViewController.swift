@@ -107,7 +107,7 @@ class SearchViewController: UIViewController {
             playItem = newPlaybackItems[index.row]
         }
         
-        var title = "Purchase"
+        var title = "Download"
         var message = NSLocalizedString("Purchase_Confirm_Message", comment: "Message")
         if btnTitle == "Delete" {
             title = "Delete"
@@ -156,27 +156,7 @@ class SearchViewController: UIViewController {
     }
     
     private func delete(_ indexPath: IndexPath, _ playItem: PlaybackItem) {
-        let localURL = "\(Const.Paths.documentsPath)/music/\(playItem.artistName)/\(playItem.trackTitle)"
-        do {
-            try FileManager.default.removeItem(atPath: localURL)
-            let uid = playItem.uid
-            self.ref.child("music/"+uid).observeSingleEvent(of: .value, with: { (snapshot) in
-                let value = snapshot.value as? NSDictionary
-                let downloadCnt = Helper.shared.setDownloadCount(value, false, uid)
-                if self.hasNewItem(indexPath) {
-                    self.newPlaybackItems[indexPath.row].downloadCount = downloadCnt
-                } else {
-                    self.playbackItems[indexPath.row].downloadCount = downloadCnt
-                }
-                LibraryManager.shared.removeLibrary(playItem)
-                LibraryManager.shared.removeFavorite(playItem)
-                self.tableView.reloadRows(at: [indexPath], with: .automatic)
-            }) { (error) in
-                print(error.localizedDescription)
-            }
-        } catch {
-            print("error")
-        }
+        Helper.shared.deleteMusicSong(playItem)
     }
     
     private func showAlert(_ indexPath: IndexPath, _ playItem: PlaybackItem) {
@@ -201,6 +181,7 @@ class SearchViewController: UIViewController {
     }
 
     private func setTableViewItems() {
+        //observeを残したい
         self.ref.child("music/").observe(.value, with: { (snapshot) in
             self.showSpinner {
                 var tmpPlaybackItems = [PlaybackItem]()
@@ -339,7 +320,7 @@ extension SearchViewController: UITableViewDelegate {
                             
         if let youtubeId = item.youtubeId {
             let title = item.trackTitle
-            self.showMessagePrompt(title, "Open the Youtube App", buttonHandler: {_ in
+            self.showMessageYesOrNo(title, "Open the Youtube App", buttonHandler: {_ in
                 Helper.shared.playInYoutube(youtubeId)
             })
         } else {

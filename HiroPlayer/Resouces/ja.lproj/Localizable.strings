@@ -18,6 +18,8 @@
 //Player
 "Player" = "プレイヤー";
 "Player_list" = "リスト";
+"lyrics" = "歌詞";
+"refresh" = "更新";
 
 //Search
 "Search" = "検索";

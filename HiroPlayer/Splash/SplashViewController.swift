@@ -30,6 +30,7 @@ class SplashViewController: UIViewController {
                 print("ERROR : \(error!.localizedDescription)")
             }
             
+            self?.checkVersion()
             self?.displayWelcome()
         }        
     }
@@ -38,6 +39,12 @@ class SplashViewController: UIViewController {
         super.viewWillDisappear(animated)
         
         Auth.auth().removeStateDidChangeListener(handle)
+    }
+    
+    private func checkVersion() {
+        let version = remoteConfig["web_version"].stringValue
+        
+        print("\(String(describing: version))")
     }
   
     private func displayWelcome() {

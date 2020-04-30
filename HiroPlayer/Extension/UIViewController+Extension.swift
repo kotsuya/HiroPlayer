@@ -36,6 +36,12 @@ extension UIViewController {
     
     func showMessagePrompt(_ title: String, _ message: String, buttonHandler:@escaping (UIAlertAction) -> Void) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: buttonHandler))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func showMessageYesOrNo(_ title: String, _ message: String, buttonHandler:@escaping (UIAlertAction) -> Void) {
+        let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
         alert.addAction(UIAlertAction(title: "OK", style: .default, handler: buttonHandler))
         self.present(alert, animated: true, completion: nil)

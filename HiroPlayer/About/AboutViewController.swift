@@ -29,6 +29,13 @@ extension AboutViewController: UITableViewDataSource {
         return section == 1 ? 2:1
     }
     
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        //let version = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as! String
+        
+        let build = Bundle.main.object(forInfoDictionaryKey: "CFBundleVersion") as! String
+        return section == 0 ? "Application Version: \(build)":nil
+    }
+    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.accessoryType = .disclosureIndicator

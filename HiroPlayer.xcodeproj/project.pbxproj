@@ -141,6 +141,7 @@
 				C6A3A06E2457E89E00859E72 /* GoogleService-Info.plist */,
 				C66E9A68245647BD006BD811 /* Common */,
 				9E017DDB2276AF6300F9531F /* PlayBar */,
+				C6A3A070245A671A00859E72 /* Splash */,
 				9E2F8AE021A03D6500A4E68C /* Login */,
 				317ECC31219BCC3700DA437B /* Library */,
 				C66E9A6724564674006BD811 /* Player */,
@@ -219,7 +220,6 @@
 		9E2F8AE021A03D6500A4E68C /* Login */ = {
 			isa = PBXGroup;
 			children = (
-				9E2F8AD621A0395F00A4E68C /* SplashViewController.swift */,
 				9E2F8ADE21A03D5F00A4E68C /* LoginViewController.swift */,
 				3160CB0E21CC72C70027DA93 /* LoginManager.swift */,
 				3160CB1021CC74C90027DA93 /* TabBarController.swift */,
@@ -261,6 +261,14 @@
 				9E2D0C3021D586A7001CE058 /* Localizable.strings */,
 			);
 			path = Resouces;
+			sourceTree = "<group>";
+		};
+		C6A3A070245A671A00859E72 /* Splash */ = {
+			isa = PBXGroup;
+			children = (
+				9E2F8AD621A0395F00A4E68C /* SplashViewController.swift */,
+			);
+			path = Splash;
 			sourceTree = "<group>";
 		};
 		C6AB94E4232B5E0E00E0D8DD /* Album */ = {

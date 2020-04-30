@@ -30,6 +30,13 @@ class PlayerCell: UITableViewCell {
         thumbImageView.image = UIImage(contentsOfFile: path)
                 
         lyricsButton.tag = indexPath.row
-        lyricsButton.isHidden = (item.lyrics == nil)
+        
+        if item.lyrics == nil {
+            lyricsButton.setTitle(nil, for: .normal)
+            lyricsButton.setImage(UIImage(named: "refresh"), for: .normal)
+        } else {
+            lyricsButton.setTitle(NSLocalizedString("lyrics", comment: "lyrics"), for: .normal)
+            lyricsButton.setImage(nil, for: .normal)
+        }
     }
 }

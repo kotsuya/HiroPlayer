@@ -237,39 +237,58 @@ class PlayerViewController: UIViewController, AVAudioPlayerDelegate {
     }
     
     @IBAction func lyricsAction(_ sender: UIButton) {
-//        let text = "渇いた恋心を隠して　憂う目に\n諂（へつら）うのは嫌いなんだけど\n嫌いなんだけど\n\n叶うなら　指先で触れたいよ\n夢なら　笑顔なのにさ\n\nたぶん　あんたに愛を伝えても\nたぶん　あんたは優しく笑う\n“でもね･･･けどさ･･･”　はっきり言え\n思わせぶりな態度で遊んで\n\nいつもあんたを許してしまう\nやっかい　でっかい　病にかかる\n好きさ　好きなのさ　愛してる\n千回唱えても　零みたいな魔法\n\n泳いだ瞳は隠し切れない　本当の事\n満たして欲しい　あんたの言葉で\nねぇ　曖昧な言葉で\n出来るなら　すぐに呼び止めたいよ\n夢なら　素直なのにさ\n当然　あんたは何も知らないで\n当然のように優しく笑う\nでもね　それが心にくる\n素知らぬ風な態度に惑って\n\nいつもあんたのことばかりだ\nやっぱどうにも出来ないようだ\n好きさ　好きなのさ　愛してる\n何回唱えても　馬鹿みたいな魔法\n\n感情　愛情　その他諸々\nI don't know で決め込む苦労\n分かる？　でもね　それが良いの\n思わせぶりな態度で遊んで\n\nいつもあんたを許してしまう\nやっかい　でっかい　病は続く\n好きさ　好きなのさ　愛してる\n千回唱えても　何回唱えても\nきっと届かぬ　馬鹿みたいな恋\n"
         let item = LibraryManager.shared.getPlaybackItems()[sender.tag]
-        guard var lyrics = item.lyrics else { return }
-                
-        while let range = lyrics.range(of: "\\n") {
-            lyrics.replaceSubrange(range, with: "\n")
-        }
+        let title = NSLocalizedString("lyrics", comment: "lyrics")
         
-        let alert = UIAlertController(title: "Lyrics", message: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
-        
-        let textView = UITextView()
-        textView.text = lyrics
-        textView.font = UIFont.systemFont(ofSize: 17)
-        textView.layer.borderColor = UIColor.lightGray.cgColor
-        textView.layer.borderWidth = 0.5
-        textView.layer.cornerRadius = 6
-        textView.isEditable = false
+        if sender.currentTitle == title {
+            guard var lyrics = item.lyrics else { return }
+                    
+            while let range = lyrics.range(of: "\\n") {
+                lyrics.replaceSubrange(range, with: "\n")
+            }
+            
+            let alert = UIAlertController(title: item.trackTitle, message: "\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n", preferredStyle: .alert)
+            
+            let textView = UITextView()
+            textView.text = lyrics
+            textView.font = UIFont.systemFont(ofSize: 17)
+            textView.layer.borderColor = UIColor.lightGray.cgColor
+            textView.layer.borderWidth = 0.5
+            textView.layer.cornerRadius = 6
+            textView.isEditable = false
 
-        // textView を追加して Constraints を追加
-        alert.view.addSubview(textView)
-        textView.snp.makeConstraints { make in
-                   make.top.equalTo(50)
-                   make.left.equalTo(10)
-                   make.right.equalTo(-10)
-                   make.bottom.equalTo(-60)
-               }
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            // textView を追加して Constraints を追加
+            alert.view.addSubview(textView)
+            textView.snp.makeConstraints { make in
+                make.top.equalTo(50)
+                make.left.equalTo(10)
+                make.right.equalTo(-10)
+                make.bottom.equalTo(-60)
+            }
             
-        }))
-        
-        self.present(alert, animated: true) {
+            alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            }))
             
+            self.present(alert, animated: true) {
+            }
+        } else {
+            self.showSpinner {
+                Helper.shared.getItem(item) { [weak self] item in
+                    guard let item = item else { return }
+                    if let lyrics = item.lyrics, lyrics.count > 0 {
+                        var items = LibraryManager.shared.getPlaybackItems()
+                        if let row = items.firstIndex(where: {$0.uid == item.uid}) {
+                            items[row] = item
+                            LibraryManager.shared.setPlaybackItem(items)
+                            let indexPath = IndexPath(row: sender.tag, section: 0)
+                            self?.tableView.reloadRows(at: [indexPath], with: .automatic)
+                        }
+                    } else {
+                        self?.showMessagePrompt("There is no lyrics.")
+                    }
+                }
+                self.hideSpinner { }
+            }
         }
     }
 }
