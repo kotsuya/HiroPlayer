@@ -34,6 +34,8 @@ class PlayerCell: UITableViewCell {
         if item.lyrics == nil {
             lyricsButton.setTitle(nil, for: .normal)
             lyricsButton.setImage(UIImage(named: "refresh"), for: .normal)
+            lyricsButton.imageEdgeInsets = UIEdgeInsets(top: 6, left: 6, bottom: 6, right: 6)
+            lyricsButton.imageView?.contentMode = .scaleAspectFit
         } else {
             lyricsButton.setTitle(NSLocalizedString("lyrics", comment: "lyrics"), for: .normal)
             lyricsButton.setImage(nil, for: .normal)
